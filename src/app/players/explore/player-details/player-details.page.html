@@ -1,0 +1,46 @@
+<ion-header translucent no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark">
+        <ion-back-button defaultHref="/players">
+        </ion-back-button>
+        </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-fab-button *ngIf="adminLogged" size="small" color="danger" (click)="onDelete()">
+        <ion-icon name="ban-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+    <ion-title align="center">Player profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" slot="fixed" class="player-profile">
+
+  <div class="card">
+    <div class="header">
+      <div class="avatar">
+        <img src="{{player.imageUrl}}" alt="" >
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="user-meta ion-text-center">
+        <h1 class="playername" >
+          <ion-label color="light">{{player.name}} {{player.surname}}</ion-label></h1>
+        <h3 class="country" >
+          <ion-label color="light">{{player.nationality}}</ion-label></h3>
+        <h3 class="ranking">
+          <ion-label color="light">Position: {{player.position}}</ion-label>
+        </h3>
+        <h3 class="ranking">
+          <ion-chip color="light">
+            <h3 color="light"> Goals:{{player.goals}}</h3>
+          </ion-chip>
+        </h3>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/fixtures"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fixtures details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-padding">
+    <ion-item>
+      <ion-img class="club-img" [src]="fixture1.homeTeamUrl" slot="start"></ion-img>
+      <ion-img class="club-img" [src]="fixture1.awayTeamUrl" slot="end"></ion-img>
+    </ion-item>
+
+    <ion-card-content>
+      This game starts at: {{fixture1.time}}<br>Game day: {{fixture1.datePreview}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button *ngIf="adminLogged" expand="block" (click)="displayResultForm()">Enter game result</ion-button>
+
+  <ion-card *ngIf="resultsForm">
+    <ion-card-header>
+
+      <ion-card-title>Enter game result:</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    <form (ngSubmit)="onAddResult()" #f2="ngForm">
+      <ion-grid>
+
+        <ion-row>
+
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Home team</ion-label>
+              <ion-input type="number" ngModel name="homeTeamGoals" (input)="homeTeamGoalsChanged($event.target.value)" required></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Away team</ion-label>
+              <ion-input type="number" ngModel name="awayTeamGoals" (input)="awayTeamGoalsChanged($event.target.value)" required></ion-input>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col size="6">
+            <ion-item *ngFor="let n of arrayHome">
+              <ion-label position="floating">Scorers</ion-label>
+              <ion-select id="{{n}}" [compareWith]="compareWith" interface="popover" ngModel name="{{n}}" required>
+                <ion-select-option *ngFor="let player of homeTeamPlayers" [value]="player">{{player.name + ' ' + player.surname}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-item *ngFor="let m of arrayAway">
+              <ion-label position="floating">Scorers</ion-label>
+              <ion-select id="{{m}}" [compareWith]="compareWith" interface="popover"  ngModel name="{{m}}" required>
+                <ion-select-option *ngFor="let player of awayTeamPlayers" [value]="player">{{player.name + ' ' + player.surname}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" shape="round" expand="block" [disabled]="f2.invalid">
+              Add result
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+
+
+  </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

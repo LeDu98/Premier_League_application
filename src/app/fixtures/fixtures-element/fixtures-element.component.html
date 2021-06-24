@@ -1,0 +1,20 @@
+<style>
+  .fixtures-data{
+    text-align: center;
+  }
+  .fixtures-data-away{
+    text-align: left;
+  }
+</style>
+
+<ion-item>
+
+    <ion-avatar slot="start" class="fixtures-data">
+      <ion-img [src]="fixture.homeTeamUrl"></ion-img>
+    </ion-avatar>
+    <ion-label class="fixtures-data">{{fixture.datePreview}}<br><i>{{fixture.time}}</i></ion-label>
+    <ion-avatar slot="end" class="fixtures-data-away">
+      <ion-img [src]="fixture.awayTeamUrl"></ion-img>
+    </ion-avatar>
+
+</ion-item>

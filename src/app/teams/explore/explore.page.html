@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Explore</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-fab-button *ngIf="adminLogged" size="small" color="danger" (click)="openModal()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar #search (ionChange)="_ionChange($event)" debounce="500"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <app-team-element *ngFor="let team of teams" [team]="team" [routerLink]="['/', 'teams', 'explore', team.id]"></app-team-element>
+  </ion-list>
+
+</ion-content>

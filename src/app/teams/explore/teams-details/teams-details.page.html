@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/teams/explore"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Team Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card class="ion-padding">
+    <img src="{{team.imageUrl}}" class="slika">
+    <ion-card-header>
+      <ion-card-title align="center">{{team.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col><b>Played</b></ion-col>
+        <ion-col><b>Won</b></ion-col>
+        <ion-col><b>Drawn</b></ion-col>
+        <ion-col><b>Lost</b></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>{{team.played}}</ion-col>
+        <ion-col>{{team.wins}}</ion-col>
+        <ion-col>{{team.draws}}</ion-col>
+        <ion-col>{{team.losses}}</ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </ion-card>
+<!--
+  <ion-card class="ion-padding">
+    <ion-title>Goalkeepers</ion-title>
+
+    <ion-card-content>
+      <ion-list>
+        <app-element *ngFor="let player of players" [player]="player" [routerLink]="['/', 'players', 'explore', player.id]">
+          <ion-item *ngIf="player.team.id===team.id && player.position==='goalkeeper'">
+            <ion-avatar slot="start">
+              <ion-img [src]="player.imageUrl"></ion-img>
+            </ion-avatar>
+            <ion-label>{{player.name}} {{player.surname}}</ion-label>
+            <ion-avatar slot="end">
+              <ion-img [src]="player.team.imageUrl"></ion-img>
+            </ion-avatar>
+          </ion-item>
+        </app-element>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+-->
+  <ion-title>Goalkeepers</ion-title>
+  <ion-list>
+    <app-element *ngFor="let player of players" [player]="player" [routerLink]="['/', 'players', 'explore', player.id]">
+      <ion-item *ngIf="player.team.id===team.id && player.position==='goalkeeper'">
+        <ion-avatar slot="start">
+          <ion-img [src]="player.imageUrl"></ion-img>
+        </ion-avatar>
+        <ion-label>{{player.name}} {{player.surname}}</ion-label>
+        <ion-avatar slot="end">
+          <ion-img [src]="player.team.imageUrl"></ion-img>
+        </ion-avatar>
+      </ion-item>
+    </app-element>
+
+  </ion-list>
+
+  <ion-title>Defenders</ion-title>
+  <ion-list>
+    <app-element *ngFor="let player of players" [player]="player" [routerLink]="['/', 'players', 'explore', player.id]">
+      <ion-item *ngIf="player.team.id===team.id && player.position==='defender'">
+        <ion-avatar slot="start">
+          <ion-img [src]="player.imageUrl"></ion-img>
+        </ion-avatar>
+        <ion-label>{{player.name}} {{player.surname}}</ion-label>
+        <ion-avatar slot="end">
+          <ion-img [src]="player.team.imageUrl"></ion-img>
+        </ion-avatar>
+      </ion-item>
+    </app-element>
+
+  </ion-list>
+
+  <ion-title>Midfielders</ion-title>
+  <ion-list>
+    <app-element *ngFor="let player of players" [player]="player" [routerLink]="['/', 'players', 'explore', player.id]">
+      <ion-item *ngIf="player.team.id===team.id && player.position==='midfielder'">
+        <ion-avatar slot="start">
+          <ion-img [src]="player.imageUrl"></ion-img>
+        </ion-avatar>
+        <ion-label>{{player.name}} {{player.surname}}</ion-label>
+        <ion-avatar slot="end">
+          <ion-img [src]="player.team.imageUrl"></ion-img>
+        </ion-avatar>
+      </ion-item>
+    </app-element>
+
+  </ion-list>
+
+  <ion-title>Forwards</ion-title>
+  <ion-list>
+    <app-element *ngFor="let player of players" [player]="player" [routerLink]="['/', 'players', 'explore', player.id]">
+      <ion-item *ngIf="player.team.id===team.id && player.position==='forward'">
+        <ion-avatar slot="start">
+          <ion-img [src]="player.imageUrl"></ion-img>
+        </ion-avatar>
+        <ion-label>{{player.name}} {{player.surname}}</ion-label>
+        <ion-avatar slot="end">
+          <ion-img [src]="player.team.imageUrl"></ion-img>
+        </ion-avatar>
+      </ion-item>
+    </app-element>
+
+  </ion-list>
+
+
+</ion-content>

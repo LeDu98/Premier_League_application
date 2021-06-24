@@ -1,0 +1,23 @@
+<style>
+  .standings-data{
+    text-align: center;
+  }
+</style>
+
+<ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="standings-data" size="2"><ion-label class="ion-text-left">{{teamsPreview.position}}.</ion-label></ion-col>
+      <ion-avatar>
+    <ion-img [src]="teamsPreview.team.imageUrl" align="left"></ion-img>
+  </ion-avatar>
+      <ion-col class="standings-data"><ion-label>{{teamsPreview.team.played}}</ion-label></ion-col>
+      <ion-col class="standings-data"><ion-label>{{teamsPreview.team.wins}}</ion-label></ion-col>
+      <ion-col class="standings-data"><ion-label>{{teamsPreview.team.draws}}</ion-label></ion-col>
+      <ion-col class="standings-data"><ion-label>{{teamsPreview.team.losses}}</ion-label></ion-col>
+      <ion-col class="standings-data"><ion-label><b>{{teamsPreview.team.points}}</b></ion-label></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-item>
+

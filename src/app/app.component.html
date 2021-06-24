@@ -1,0 +1,70 @@
+<ion-app>
+
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/standings">
+            <ion-icon src="assets/custom-ion-icons/home.svg" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/teams">
+            <ion-icon src="assets/custom-ion-icons/teams.svg" slot="start"></ion-icon>
+            <ion-label>Teams</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/players">
+            <ion-icon src="assets/custom-ion-icons/players.svg" slot="start"></ion-icon>
+            <ion-label>Players</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/followings">
+            <ion-icon src="assets/custom-ion-icons/follows.svg" slot="start"></ion-icon>
+            <ion-label>Follows</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item (click)="onLogOut()">
+            <ion-icon src="assets/custom-ion-icons/logout.svg" slot="start"></ion-icon>
+            <ion-label>Log out</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <ion-tabs id="tabs">
+    <ion-tab-bar #myTabBar id="myTabBar" slot="bottom">
+      <ion-tab-button tab="standings">
+        <ion-icon src="assets/custom-ion-icons/standings.svg"></ion-icon>
+        <!--<ion-icon name="bar-chart"></ion-icon>-->
+        <ion-label>Standings</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="fixtures">
+        <ion-icon src="assets/custom-ion-icons/fixtures.svg"></ion-icon>
+        <!--<ion-icon name="today"></ion-icon>-->
+        <ion-label>Fixtures</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="results">
+        <ion-icon src="assets/custom-ion-icons/results.svg"></ion-icon>
+        <!--<ion-icon name="newspaper"></ion-icon>-->
+        <ion-label>Results</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-app>

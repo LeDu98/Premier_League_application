@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCancel()" slot="end">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onAddFixture()" #f1="ngForm">
+    <ion-grid>
+
+      <ion-row>
+        <ion-col size-sm="6">
+          <ion-item>
+            <ion-label>Home team</ion-label>
+            <ion-select id="home_team" [compareWith]="compareWith" ngModel name="homeTeam" #homeTeam="ngModel" interface="popover">
+              <ion-select-option *ngFor="let team of teams" [value]="team">{{team.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6">
+          <ion-item>
+            <ion-label>Away team</ion-label>
+            <ion-select [compareWith]="compareWith" ngModel name="awayTeam" #awayTeam="ngModel" interface="popover">
+              <ion-select-option *ngFor="let team of teams" [value]="team">{{team.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6">
+          <ion-item>
+            <ion-label position="floating">Date</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY H:mm" min="2021-05-01" max="2021-12-30" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" ngModel name="date"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block" [disabled]="f1.invalid">
+            Add it
+          </ion-button>
+        </ion-col>
+      </ion-row>
+<ion-row>
+  <ion-col>
+    <ion-item *ngIf="form.value.awayTeam.id === form.value.homeTeam.id && awayTeam.touched && homeTeam.touched" lines="none">
+      <ion-label>You need to chose different teams!</ion-label>
+    </ion-item>
+  </ion-col>
+</ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

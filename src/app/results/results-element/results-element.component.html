@@ -1,0 +1,21 @@
+<style>
+  .fixtures-data{
+    text-align: center;
+  }
+  .fixtures-data-away{
+    text-align: left;
+  }
+</style>
+
+<ion-item>
+
+  <ion-avatar slot="start" class="fixtures-data">
+    <ion-img [src]="result.clubHome.imageUrl"></ion-img>
+  </ion-avatar>
+  <ion-label class="fixtures-data"><b>{{result.goalsHome}}:{{result.goalsAway}}
+    <br></b><i>{{result.datePreview}}</i></ion-label>
+  <ion-avatar slot="end" class="fixtures-data-away">
+    <ion-img [src]="result.clubAway.imageUrl"></ion-img>
+  </ion-avatar>
+
+</ion-item>

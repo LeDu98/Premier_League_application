@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Followings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onAddFollowings() "#f="ngForm">
+    <ion-grid *ngIf="!adminLogged">
+      <ion-row>
+        <ion-col size-sm="6">
+          <ion-item>
+            <ion-label position="floating">Select your favorite teams</ion-label>
+            <ion-select ngModel name="team" required multiple="true">
+              <ion-select-option *ngFor="let team of teams" [value]="team">{{team.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block" [disabled]="f.invalid">
+            Confirm
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+  <ion-content *ngIf="!adminLogged">
+    <ion-card class="ion-padding">
+      <ion-text color="dark">
+        <h5>Currently following:</h5>
+      </ion-text>
+
+      <ion-card-content>
+        <ion-list>
+          <app-team-element *ngFor="let team of followingTeams" [team]="team"></app-team-element>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+  <ion-content *ngIf="adminLogged">
+    <ion-card class="ion-padding">
+      <ion-text color="dark">
+        <h5>You are logged as administrator.</h5>
+      </ion-text>
+      <ion-card-content>
+        <p>You can't follow teams with admin account.</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+</ion-content>
